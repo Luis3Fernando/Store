@@ -1,8 +1,9 @@
+import Layout from '../../components/Layout'
 function Orders() {
   return (
-    <div>
+    <Layout>
       orders
-    </div>
+    </Layout>
   )
 }
 
