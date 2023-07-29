@@ -7,6 +7,7 @@ import Order from '../others/Order'
 import Orders from '../others/Orders'
 import Signin from '../others/Signin'
 import Navbar from '../../components/Navbar'
+import Context from '../../context/Context';
 
 const AppRoutes = () =>{
   let routes = useRoutes([
@@ -25,10 +26,12 @@ function App() {
   
   return (
     <>
+    <Context>
     <BrowserRouter>
       <AppRoutes></AppRoutes>
       <Navbar></Navbar>
     </BrowserRouter>
+    </Context>
     </>
   )
 }
