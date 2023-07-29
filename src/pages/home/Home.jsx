@@ -1,9 +1,13 @@
 import Layout from '../../components/Layout'
 import Card from '../../components/Card'
 import {useState, useEffect} from 'react'
+import ProductDetail from '../../components/ProductDetail'
+import { useContext } from 'react'
+import { ShoopingCartContext } from '../../context/Context'
 
 function home() {
   const [items, setItems] = useState(null)
+  const context = useContext(ShoopingCartContext)
 
   useEffect(()=>{
     fetch('http://openlibrary.org/people/george08/lists/OL97L/seeds.json')
@@ -19,6 +23,7 @@ function home() {
         ))
       }
       </div>
+      {context.isOpenAside && <ProductDetail />}
     </Layout>
   )
 }
