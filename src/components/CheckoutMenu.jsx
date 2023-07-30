@@ -1,10 +1,23 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 import { useContext } from "react";
 import { ShoopingCartContext } from "../context/Context";
 import OrderCard from "../components/OrderCard";
 
 function CheckoutMenu() {
   const context = useContext(ShoopingCartContext);
+  const handleCheckout = () => {
+    const orderToAdd = {
+      date: "01.02.2023",
+      products: context.cartProducts,
+      totalProducts: context.cartProducts.lenght,
+    };
+
+    context.setOrder([...context.order, orderToAdd]);
+    context.setCartProducts([]);
+    context.setCount(0);
+    context.CloseMenu();
+  };
   return (
     <aside
       className={`${
@@ -32,6 +45,16 @@ function CheckoutMenu() {
         {context.cartProducts.map((product) => (
           <OrderCard key={product.title} data={product}></OrderCard>
         ))}
+      </div>
+      <div className="px-6 mb-6">
+        <Link to="/orders/last">
+          <button
+            className="bg-black py-3 text-white w-full rounded-lg"
+            onClick={() => handleCheckout()}
+          >
+            Obtener
+          </button>
+        </Link>
       </div>
     </aside>
   );

@@ -18,6 +18,8 @@ function Context({ children }) {
   const [productToShow, setProductToShow] = useState({})
 
   const [cartProducts, setCartProducts] = useState([])
+
+  const [order, setOrder] = useState([])
   return (
     <ShoopingCartContext.Provider value={{
         count, 
@@ -32,7 +34,9 @@ function Context({ children }) {
         cartProducts,
         setCartProducts,
         OpenMenu,
-        CloseMenu
+        CloseMenu,
+        order,
+        setOrder
         }}>
       {children}
     </ShoopingCartContext.Provider>

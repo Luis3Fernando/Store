@@ -18,9 +18,10 @@ const AppRoutes = () =>{
     { path: '/*', element: <NotFound></NotFound> },
     { path: '/order', element: <Order></Order> },
     { path: '/orders', element: <Orders></Orders> },
+    { path: '/orders/last', element: <Orders></Orders> },
+    { path: '/order/:id', element: <Orders></Orders> },
     { path: '/signin', element: <Signin></Signin> },
   ])
-
   return routes
 }
 
