@@ -5,7 +5,23 @@ function Card(data) {
   const context = useContext(ShoopingCartContext);
   const showProduct = (product) =>{
     context.OpenAside()
+    context.CloseMenu()
     context.setProductToShow(product)
+  }
+
+  const render = (title)=>{
+    const isInCart = context.cartProducts.filter(product=>product.title===title).length>0
+    return isInCart
+  }
+
+  const addProduct = (event,product) =>{
+    if(!render(product.title)){
+      context.setCartProducts([...context.cartProducts, product])
+      context.increment()
+    }
+    event.stopPropagation()
+    context.OpenMenu()
+    context.CloseAside()
   }
   return (
     <div className="bg-white cursor-pointer w-60 h-65 rounded-lg" onClick={() => showProduct(data.data)}>
@@ -20,7 +36,7 @@ function Card(data) {
         />
         <button
           className="absolute top-2 right-2 flex justify-center items-center bg-white w-6 h-6 rounded-full p-1"
-          onClick={context.increment}
+          onClick={(event)=>addProduct(event,data.data)}
         >
           +
         </button>

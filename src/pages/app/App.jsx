@@ -7,7 +7,9 @@ import Order from '../others/Order'
 import Orders from '../others/Orders'
 import Signin from '../others/Signin'
 import Navbar from '../../components/Navbar'
-import Context from '../../context/Context';
+import Context, { ShoopingCartContext } from '../../context/Context';
+import CheckoutMenu from '../../components/CheckoutMenu'
+import { useContext } from 'react'
 
 const AppRoutes = () =>{
   let routes = useRoutes([
@@ -23,13 +25,14 @@ const AppRoutes = () =>{
 }
 
 function App() {
-  
+  const context = useContext(ShoopingCartContext)
   return (
     <>
     <Context>
     <BrowserRouter>
       <AppRoutes></AppRoutes>
       <Navbar></Navbar>
+     <CheckoutMenu/>
     </BrowserRouter>
     </Context>
     </>
