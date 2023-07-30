@@ -10,7 +10,8 @@ function Context({ children }) {
   };
   const OpenAside = () => setIsOpenAside(true)
   const CloseAside = () => setIsOpenAside(false)
-  console.log("count: ", count);
+
+  const [productToShow, setProductToShow] = useState({})
   return (
     <ShoopingCartContext.Provider value={{
         count, 
@@ -18,7 +19,9 @@ function Context({ children }) {
         setCount, 
         increment,
         OpenAside,
-        CloseAside
+        CloseAside,
+        productToShow,
+        setProductToShow
         }}>
       {children}
     </ShoopingCartContext.Provider>

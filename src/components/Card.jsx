@@ -3,8 +3,12 @@ import { ShoopingCartContext } from "../context/Context";
 
 function Card(data) {
   const context = useContext(ShoopingCartContext);
+  const showProduct = (product) =>{
+    context.OpenAside()
+    context.setProductToShow(product)
+  }
   return (
-    <div className="bg-white cursor-pointer w-60 h-65 rounded-lg" onClick={context.OpenAside}>
+    <div className="bg-white cursor-pointer w-60 h-65 rounded-lg" onClick={() => showProduct(data.data)}>
       <figure className="relative mb-2 w-full h-4/5">
         <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-1">
           book
